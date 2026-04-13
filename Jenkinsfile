@@ -97,8 +97,10 @@ pipeline {
 
         stage('Deploy - prod') {
     when {
-        branch 'master'
-    }
+    expression {
+        return env.GIT_BRANCH?.contains('master')
+	  }
+	}	
     steps {
         timeout(time: 15, unit: 'MINUTES') {
             input message: 'Déployer en production ?', ok: 'Confirmer'
