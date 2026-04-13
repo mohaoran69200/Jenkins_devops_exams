@@ -45,14 +45,14 @@ pipeline {
                     helm upgrade --install movie-service ./charts \
                         --namespace dev \
                         --set image.repository=${IMAGE_MOVIE} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30007
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace dev \
                         --set image.repository=${IMAGE_CAST} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30008
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30008
                 '''
             }
         }
@@ -64,14 +64,14 @@ pipeline {
                     helm upgrade --install movie-service ./charts \
                         --namespace qa \
                         --set image.repository=${IMAGE_MOVIE} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30007
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace qa \
                         --set image.repository=${IMAGE_CAST} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30008
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30008
                 '''
             }
         }
@@ -83,14 +83,14 @@ pipeline {
                     helm upgrade --install movie-service ./charts \
                         --namespace staging \
                         --set image.repository=${IMAGE_MOVIE} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30007
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace staging \
                         --set image.repository=${IMAGE_CAST} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30008
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30008
                 '''
             }
         }
@@ -106,14 +106,14 @@ pipeline {
                     helm upgrade --install movie-service ./charts \
                         --namespace prod \
                         --set image.repository=${IMAGE_MOVIE} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30007
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace prod \
                         --set image.repository=${IMAGE_CAST} \
-                        --set image.tag=${IMAGE_TAG}
-			--set service.nodePort=30008
+                        --set image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30008
                 '''
             }
         }
