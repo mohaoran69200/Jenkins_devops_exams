@@ -46,11 +46,13 @@ pipeline {
                         --namespace dev \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace dev \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30008
                 '''
             }
         }
@@ -63,11 +65,13 @@ pipeline {
                         --namespace qa \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace qa \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30008
                 '''
             }
         }
@@ -80,11 +84,13 @@ pipeline {
                         --namespace staging \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace staging \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30008
                 '''
             }
         }
@@ -101,11 +107,13 @@ pipeline {
                         --namespace prod \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30007
 
                     helm upgrade --install cast-service ./charts \
                         --namespace prod \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG}
+			--set service.nodePort=30008
                 '''
             }
         }
