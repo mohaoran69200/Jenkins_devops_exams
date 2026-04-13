@@ -65,13 +65,13 @@ pipeline {
                         --namespace qa \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30007
+                        --set service.nodePort=30009
 
                     helm upgrade --install cast-service ./charts \
                         --namespace qa \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30008
+                        --set service.nodePort=30010
                 '''
             }
         }
@@ -84,13 +84,13 @@ pipeline {
                         --namespace staging \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30007
+                        --set service.nodePort=30011
 
                     helm upgrade --install cast-service ./charts \
                         --namespace staging \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30008
+                        --set service.nodePort=30012
                 '''
             }
         }
@@ -107,13 +107,13 @@ pipeline {
                         --namespace prod \
                         --set image.repository=${IMAGE_MOVIE} \
                         --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30007
+                        --set service.nodePort=30013
 
                     helm upgrade --install cast-service ./charts \
                         --namespace prod \
                         --set image.repository=${IMAGE_CAST} \
                         --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30008
+                        --set service.nodePort=30014
                 '''
             }
         }
