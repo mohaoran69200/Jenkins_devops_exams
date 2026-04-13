@@ -96,28 +96,30 @@ pipeline {
         }
 
         stage('Deploy - prod') {
-            when {
-                branch 'master'
-            }
-            steps {
-                input message: 'Déployer en production ?', ok: 'Confirmer'
-                sh '''
-                    export KUBECONFIG=$KUBECONFIG
-                    helm upgrade --install movie-service ./charts \
-                        --namespace prod \
-                        --set image.repository=${IMAGE_MOVIE} \
-                        --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30013
-
-                    helm upgrade --install cast-service ./charts \
-                        --namespace prod \
-                        --set image.repository=${IMAGE_CAST} \
-                        --set image.tag=${IMAGE_TAG} \
-                        --set service.nodePort=30014
-                '''
-            }
+    when {
+        branch 'master'
+    }
+    steps {
+        timeout(time: 15, unit: 'MINUTES') {
+            input message: 'Déployer en production ?', ok: 'Confirmer'
         }
 
+        sh '''
+            export KUBECONFIG=$KUBECONFIG
+            helm upgrade --install movie-service ./charts \
+                --namespace prod \
+                --set image.repository=${IMAGE_MOVIE} \
+                --set image.tag=${IMAGE_TAG} \
+                --set service.nodePort=30013
+
+            helm upgrade --install cast-service ./charts \
+                --namespace prod \
+                --set image.repository=${IMAGE_CAST} \
+                --set image.tag=${IMAGE_TAG} \
+                --set service.nodePort=30014
+        '''
+		}
+	}
     }
 
     post {
